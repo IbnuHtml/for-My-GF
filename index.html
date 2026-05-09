@@ -14,7 +14,7 @@
     }
     h1 {
       color: #fff;
-      margin-top: 20vh;
+      margin-top: 15vh;
       text-shadow: 2px 2px #ff1493;
       font-size: 6vw;
       animation: pulse 2s infinite;
@@ -38,6 +38,7 @@
     }
     .yes { background-color: #ffb6c1; }
     .no { background-color: #add8e6; }
+    .music { background-color: #ffe4b5; }
     button:hover { transform: scale(1.1); }
 
     .popup {
@@ -86,8 +87,11 @@
 <body>
   <h1>Sayang, maafin aku ya 💖</h1>
   <p>Aku janji akan memperbaiki kesalahanku, aku salah karena kurang memuji kecantikan kamu. Aku emang excited tapi aku ga menunjukkan nya dengan chat langsung 🍓</p>
+  
   <button class="yes" onclick="forgive(true)">Iya</button>
   <button class="no" onclick="forgive(false)">Tidak</button>
+  <br>
+  <button class="music" onclick="toggleMusic()">▶️ Play/Pause Musik</button>
 
   <!-- Musik autoplay -->
   <audio id="bgMusic" loop>
@@ -108,7 +112,7 @@
 
     function forgive(isYes) {
       showPopup(isYes);
-      music.play();
+      music.play(); // pastikan musik jalan setelah interaksi
     }
 
     function showPopup(isYes) {
@@ -129,6 +133,16 @@
         flower.remove();
       }, 2000);
     }
+
+    // Tombol Play/Pause musik
+    function toggleMusic() {
+      if (music.paused) {
+        music.play();
+      } else {
+        music.pause();
+      }
+    }
   </script>
 </body>
 </html>
+

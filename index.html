@@ -8,13 +8,13 @@
     body {
       font-family: 'Comic Sans MS', cursive;
       text-align: center;
-      background: linear-gradient(135deg, #ffc0cb, #ff69b4);
       margin: 0;
       padding: 20px;
+      background: #ff69b4;
     }
     h1 {
       color: #fff;
-      margin-top: 15vh;
+      margin-top: 5vh;
       text-shadow: 2px 2px #ff1493;
       font-size: 6vw;
       animation: pulse 2s infinite;
@@ -59,6 +59,21 @@
       animation: fadeText 2s forwards;
     }
 
+    /* Grid foto */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 20px auto;
+      max-width: 90%;
+    }
+    .grid img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
     @keyframes pop {
       0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
       50% { transform: translate(-50%, -50%) scale(1.3); opacity: 1; }
@@ -93,7 +108,15 @@
   <br>
   <button class="music" onclick="toggleMusic()">▶️ Play/Pause Musik</button>
 
-  <!-- Musik autoplay -->
+  <!-- Grid Foto -->
+  <div class="grid">
+    <img src="aa.jpeg" alt="Foto 1">
+    <img src="ad.jpeg" alt="Foto 2">
+    <img src="add.jpeg" alt="Foto 3">
+    <img src="bg.jpeg" alt="Foto 4">
+  </div>
+
+  <!-- Musik -->
   <audio id="bgMusic" loop>
     <source src="harvey.mp3" type="audio/mpeg">
     Browser kamu tidak mendukung audio.
@@ -102,9 +125,9 @@
   <script>
     const music = document.getElementById("bgMusic");
 
-    // Set mulai dari menit 1 (60 detik)
+    // Set mulai dari detik 58
     music.addEventListener("loadedmetadata", () => {
-      music.currentTime = 60;
+      music.currentTime = 58;
       music.play().catch(() => {
         console.log("Autoplay diblokir, musik akan jalan setelah klik tombol.");
       });
@@ -145,4 +168,3 @@
   </script>
 </body>
 </html>
-

@@ -86,8 +86,8 @@
 <body>
   <h1>Sayang, maafin aku ya 💖</h1>
   <p>Aku janji akan memperbaiki kesalahanku, aku salah karena kurang memuji kecantikan kamu. Aku emang excited tapi aku ga menunjukkan nya dengan chat langsung 🍓</p>
-  <button class="yes" onclick="forgive()">Iya</button>
-  <button class="no" onclick="forgive()">Tidak</button>
+  <button class="yes" onclick="forgive(true)">Iya</button>
+  <button class="no" onclick="forgive(false)">Tidak</button>
 
   <!-- Musik autoplay -->
   <audio id="bgMusic" loop>
@@ -101,24 +101,28 @@
     // Set mulai dari menit 1 (60 detik)
     music.addEventListener("loadedmetadata", () => {
       music.currentTime = 60;
-      // coba play otomatis
       music.play().catch(() => {
         console.log("Autoplay diblokir, musik akan jalan setelah klik tombol.");
       });
     });
 
-    function forgive() {
-      showPopup();
-      // pastikan musik jalan setelah interaksi
+    function forgive(isYes) {
+      showPopup(isYes);
       music.play();
     }
 
-    function showPopup() {
+    function showPopup(isYes) {
       const flowers = ["🌸","🌹","🌻","💐","🌷"];
       const flower = document.createElement("div");
       flower.className = "popup";
-      flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)] +
-        "<span>Yeay! Kamu memaafkan aku 😍💐</span>";
+
+      if (isYes) {
+        flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)] +
+          "<span>Yeay! Kamu memaafkan aku 😍💐</span>";
+      } else {
+        flower.innerHTML = "😢<span>Harus maafin dong sayang</span>";
+      }
+
       document.body.appendChild(flower);
 
       setTimeout(() => {

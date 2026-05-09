@@ -31,24 +31,38 @@
       transition: transform 0.2s;
       animation: bounce 2s infinite;
     }
-    .yes {
-      background-color: #ffb6c1;
+    .yes { background-color: #ffb6c1; }
+    .no { background-color: #add8e6; }
+    button:hover { transform: scale(1.2) rotate(-5deg); }
+
+    /* Pop-up bunga + teks */
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      font-size: 60px;
+      color: #fff;
+      text-align: center;
+      opacity: 0;
+      animation: pop 1.5s forwards;
     }
-    .no {
-      background-color: #add8e6;
+    .popup span {
+      display: block;
+      font-size: 28px;
+      margin-top: 15px;
+      animation: fadeText 2s forwards;
     }
-    button:hover {
-      transform: scale(1.2) rotate(-5deg);
+
+    @keyframes pop {
+      0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+      50% { transform: translate(-50%, -50%) scale(1.5); opacity: 1; }
+      100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
     }
-    .flower {
-      position: absolute;
-      font-size: 30px;
-      animation: float 5s linear forwards;
-    }
-    @keyframes float {
-      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-      50% { transform: translateY(-150px) rotate(180deg); opacity: 0.8; }
-      100% { transform: translateY(-300px) rotate(360deg); opacity: 0; }
+    @keyframes fadeText {
+      0% { opacity: 0; }
+      50% { opacity: 1; }
+      100% { opacity: 0; }
     }
     @keyframes pulse {
       0% { transform: scale(1); }
@@ -66,31 +80,27 @@
   </style>
 </head>
 <body>
-  <h1>Sayang, maafin aku ya 💖</h1>
+  <h1>Sayang, maafkan aku ya 💖</h1>
   <p>Aku Salah Harusnya ak Puji Kamu Dengan Lebih mengekspos Kecantikanmu Yang Sangat Gorgeus itu 🍓</p>
   <button class="yes" onclick="forgive()">Iya</button>
   <button class="no" onclick="forgive()">Tidak</button>
 
   <script>
     function forgive() {
-      alert("Yeay! Kamu memaafkan aku 😍💐");
-      for (let i = 0; i < 20; i++) {
-        createFlower();
-      }
+      showPopup();
     }
 
-    function createFlower() {
-      const flower = document.createElement("div");
-      flower.className = "flower";
+    function showPopup() {
       const flowers = ["🌸","🌹","🌻","💐","🌷"];
-      flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
-      flower.style.left = Math.random() * window.innerWidth + "px";
-      flower.style.top = (window.innerHeight - 50) + "px";
+      const flower = document.createElement("div");
+      flower.className = "popup";
+      flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)] +
+        "<span>Yeay! Kamu memaafkan aku 😍💐</span>";
       document.body.appendChild(flower);
 
       setTimeout(() => {
         flower.remove();
-      }, 5000);
+      }, 2000); // hilang setelah 2 detik
     }
   </script>
 </body>

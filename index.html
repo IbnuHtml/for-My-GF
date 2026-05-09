@@ -90,20 +90,24 @@
   <button class="no" onclick="forgive()">Tidak</button>
 
   <!-- Musik autoplay -->
-  <audio id="bgMusic" autoplay loop>
-    <source src="Her’s - Harvey (Official Audio).mp3" type="audio/mpeg">
+  <audio id="bgMusic" loop>
+    <source src="harvey.mp3" type="audio/mpeg">
     Browser kamu tidak mendukung audio.
   </audio>
 
   <script>
-    // Set musik mulai dari menit 1 (60 detik)
     const music = document.getElementById("bgMusic");
     music.addEventListener("loadedmetadata", () => {
       music.currentTime = 60; // mulai dari 01:00
+      music.play().catch(() => {
+        console.log("Autoplay diblokir, musik akan jalan setelah klik tombol.");
+      });
     });
 
     function forgive() {
       showPopup();
+      // pastikan musik jalan setelah interaksi
+      music.play();
     }
 
     function showPopup() {

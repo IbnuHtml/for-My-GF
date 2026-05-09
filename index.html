@@ -97,8 +97,11 @@
 
   <script>
     const music = document.getElementById("bgMusic");
+
+    // Set mulai dari menit 1 (60 detik)
     music.addEventListener("loadedmetadata", () => {
-      music.currentTime = 60; // mulai dari 01:00
+      music.currentTime = 60;
+      // coba play otomatis
       music.play().catch(() => {
         console.log("Autoplay diblokir, musik akan jalan setelah klik tombol.");
       });

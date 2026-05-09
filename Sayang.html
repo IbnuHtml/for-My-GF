@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Minta Maaf</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      background: pink;
+      background-image: url("https://emojicdn.elk.sh/🌸"), 
+                        url("https://emojicdn.elk.sh/🌹"), 
+                        url("https://emojicdn.elk.sh/🌻");
+      background-repeat: repeat;
+      background-size: 80px 80px;
+    }
+    h1 {
+      color: #ff1493;
+      margin-top: 50px;
+      text-shadow: 2px 2px #fff;
+    }
+    p {
+      font-size: 20px;
+      color: #660033;
+    }
+    button {
+      margin: 20px;
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .yes {
+      background-color: #ffb6c1;
+    }
+    .no {
+      background-color: #add8e6;
+    }
+    button:hover {
+      transform: scale(1.1);
+    }
+    .flower {
+      position: absolute;
+      font-size: 30px;
+      animation: float 3s linear forwards;
+    }
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-200px) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Sayang, maafin aku ya 💖</h1>
+  <p>Aku Salah Harusnya ak Puji Kamu Dengan Lebih mengekspos Kecantikanmu Yang Sangat Gorgeus itu 🍓</p>
+  <button class="yes" onclick="forgive()">Iya</button>
+  <button class="no" onclick="forgive()">Tidak</button>
+
+  <script>
+    function forgive() {
+      alert("Yeay! Kamu memaafkan aku 😍💐");
+      for (let i = 0; i < 15; i++) {
+        createFlower();
+      }
+    }
+
+    function createFlower() {
+      const flower = document.createElement("div");
+      flower.className = "flower";
+      const flowers = ["🌸","🌹","🌻","💐","🌷"];
+      flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+      flower.style.left = Math.random() * window.innerWidth + "px";
+      flower.style.top = (window.innerHeight - 50) + "px";
+      document.body.appendChild(flower);
+
+      setTimeout(() => {
+        flower.remove();
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
